@@ -1,11 +1,22 @@
-import * as React from "react";
+import React, { Component } from "react";
+import Search from "./search/Search";
+import Expandable from "./expandable/Expandable";
+import Tile from "./tile/Tile";
 import "./styles.css";
 
-export default function App() {
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
-  );
+export default class App extends Component<{}, {}> {
+  render() {
+    return (
+      <div className="App">
+        <h1>Hello App</h1>
+        <Search />
+        <Expandable />
+        <div>
+          <Tile />
+          <Tile />
+          <Tile />
+        </div>
+      </div>
+    );
+  }
 }

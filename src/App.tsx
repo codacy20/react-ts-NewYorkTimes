@@ -42,8 +42,8 @@ export default class App extends Component<{}, basicRequestArticle> {
         <Search />
         <Expandable />
         <div>
-          {this.state.results.map((item: Article) => (
-            <Tile item={item} />
+          {this.state.results.map((item: Article, index: number) => (
+            <Tile item={item} key={index} />
           ))}
         </div>
       </div>

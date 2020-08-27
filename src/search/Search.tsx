@@ -6,6 +6,7 @@ export default class Search extends Component<{}, {}> {
     return (
       <div>
         <span>Search works!</span>
+        <input type="text" placeholder="Describe your issue" />
       </div>
     );
   }

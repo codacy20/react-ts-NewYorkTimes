@@ -1,2 +1,3 @@
-# react-ts-faq
+# react-ts-NewYorkTimes
+
 Created with CodeSandbox

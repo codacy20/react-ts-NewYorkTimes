@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Search from "./search/Search";
 import Expandable from "./expandable/Expandable";
 import Tile from "./tile/Tile";
-import { basicRequestArticle, Article } from "./models/Response";
-import "./styles.css";
+import { basicRequestEmailedArticle, EmailedArticle } from "./models/Response";
+import "./styles.scss";
 
-export default class App extends Component<{}, basicRequestArticle> {
-  selectedArticles: Article[] = [];
+export default class App extends Component<{}, basicRequestEmailedArticle> {
+  selectedArticles: EmailedArticle[] = [];
 
   constructor(props: any) {
     super(props);
@@ -18,16 +18,17 @@ export default class App extends Component<{}, basicRequestArticle> {
       "https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=vodyeykmBd5eNVqEx2GesHtIpocrXqWq"
     )
       .then((response) => response.json())
-      .then((result: basicRequestArticle) => this.checkResult(result));
+      .then((result: basicRequestEmailedArticle) => this.checkResult(result));
   }
 
-  checkResult(results: basicRequestArticle) {
-    results.results.forEach((item: Article) => {
-      if (item.multimedia.length > 0) this.selectedArticles.push(item);
+  checkResult(results: basicRequestEmailedArticle) {
+    console.log(results);
+    results.results.forEach((item: EmailedArticle) => {
+      if (item.media && item.media.length > 0) this.selectedArticles.push(item);
     });
-    let newArr: Article[] = [];
+    let newArr: EmailedArticle[] = [];
     for (let index = 0; index < 3; index++) {
-      const randomElement: Article = this.selectedArticles[
+      const randomElement: EmailedArticle = this.selectedArticles[
         Math.floor(Math.random() * this.selectedArticles.length)
       ];
       newArr.push(randomElement);
@@ -38,11 +39,10 @@ export default class App extends Component<{}, basicRequestArticle> {
   render() {
     return (
       <div className="App">
-        <h1>Hello App</h1>
         <Search />
         <Expandable />
-        <div>
-          {this.state.results.map((item: Article, index: number) => (
+        <div className="tiles-container">
+          {this.state.results.map((item: EmailedArticle, index: number) => (
             <Tile item={item} key={index} />
           ))}
         </div>

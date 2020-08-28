@@ -7,7 +7,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  user-select: none;
 }
 
 .App {
+  width: 838px;
+  .tiles-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
 }

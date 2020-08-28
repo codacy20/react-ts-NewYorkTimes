@@ -32,3 +32,23 @@ export interface Metadata {
   url: string;
   width: number;
 }
+
+export interface SearchResponse {
+  response: ISearchResponse;
+}
+
+export interface ISearchResponse {
+  docs: IDoc[];
+}
+
+export interface IDoc {
+  abstract: string;
+  web_url: string;
+  pub_date: string;
+  headline: IHeadline;
+}
+
+export interface IHeadline {
+  main: string;
+  print_headline: string;
+}

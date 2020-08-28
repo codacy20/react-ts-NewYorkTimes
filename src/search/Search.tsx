@@ -1,15 +1,18 @@
 import React, { Component } from "react";
+import { SearchResponse, ISearchResponse, IDoc } from "./../models/Response";
 import "./Search.scss";
 
-export default class Search extends Component<{}, {}> {
+export default class Search extends Component<{}, ISearchResponse> {
   constructor(props: any) {
     super(props);
-    this.state = { num_results: 0, results: [] };
+    // Don't call this.setState() here!
+    this.state = { docs: [] };
   }
 
   onKeyUp(event: React.FormEvent<HTMLInputElement>) {
     const newValue = event.currentTarget.value;
-    // this.getData(newValue);
+    if (newValue.length >= 4) this.getData(newValue);
+    if (newValue.length < 4) this.setState({ docs: [] });
   }
 
   getData(newValue: string) {
@@ -17,24 +20,42 @@ export default class Search extends Component<{}, {}> {
       `https://api.nytimes.com/svc/search/v2/articlesearch.json?facet=false&q=${newValue}&sort=relevance&api-key=vodyeykmBd5eNVqEx2GesHtIpocrXqWq`
     )
       .then((response) => response.json())
-      .then((result: any) => this.checkResult(result));
+      .then((result: SearchResponse) => this.checkResult(result));
   }
 
-  checkResult(result: any) {
-    console.log(result);
+  navigate(item: IDoc) {
+    window.open(item.web_url, "_blank");
+  }
+
+  checkResult(result: SearchResponse) {
+    this.setState(result.response);
   }
 
   render() {
+    let results = null;
+    if (this.state.docs.length > 0)
+      results = (
+        <div className="result">
+          {this.state.docs.map((item: IDoc, index: number) => (
+            <span onClick={() => this.navigate(item)}>
+              {item.headline.main}
+            </span>
+          ))}
+        </div>
+      );
     return (
       <div className="search-container">
         <span className="title">Find the news that matters to you!</span>
         <div className="searchbox">
-          <span className="material-icons">search</span>
-          <input
-            type="text"
-            placeholder="Look up a topic"
-            onKeyUp={this.onKeyUp.bind(this)}
-          />
+          <div className="searchbox-inner">
+            <span className="material-icons">search</span>
+            <input
+              type="text"
+              placeholder="Look up a topic"
+              onKeyUp={this.onKeyUp.bind(this)}
+            />
+          </div>
+          {results}
         </div>
       </div>
     );

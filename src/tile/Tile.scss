@@ -1,0 +1,17 @@
+.tile-container{
+  width: 256px;
+  height: 177px;
+  display: flex;
+  justify-content: center;
+  align-items:flex-end;
+  border-radius: 11px;
+  box-shadow: 0px 9px 10px -4px rgba(201, 214, 239, 0.45654);
+  cursor: pointer;
+  marquee{
+    background: #FFFFFF;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    line-height: 45px;
+    height: 45px;
+  } 
+}

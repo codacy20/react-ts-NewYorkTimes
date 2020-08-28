@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 95px;
+  z-index: 0;
   .wrapper::-webkit-scrollbar {
     display: none;
   }    
@@ -19,7 +20,14 @@
       color: #202842;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       cursor: pointer;
+      padding: 7px;
+      border-radius: 5px;
+    }
+    .expandable-item:hover{
+      background: #DEE4F1;
+      border-radius: 5px;
     }
   }
 }

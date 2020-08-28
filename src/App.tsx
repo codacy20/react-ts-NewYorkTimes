@@ -46,6 +46,14 @@ export default class App extends Component<{}, basicRequestEmailedArticle> {
             <Tile item={item} key={index} />
           ))}
         </div>
+        <div className="love">
+          <span>Made with</span>
+          <span className="material-icons">favorite</span>
+          <span>amir</span>
+        </div>
+        <div className="credit">
+          <span>Made using nytimes public api</span>
+        </div>
       </div>
     );
   }

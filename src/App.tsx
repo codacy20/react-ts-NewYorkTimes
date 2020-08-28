@@ -15,7 +15,7 @@ export default class App extends Component<{}, basicRequestArticle> {
   }
   componentDidMount() {
     fetch(
-      "https://api.nytimes.com/svc/topstories/v2/world.json?api-key=vodyeykmBd5eNVqEx2GesHtIpocrXqWq"
+      "https://api.nytimes.com/svc/mostpopular/v2/viewed/7.json?api-key=vodyeykmBd5eNVqEx2GesHtIpocrXqWq"
     )
       .then((response) => response.json())
       .then((result: basicRequestArticle) => this.checkResult(result));

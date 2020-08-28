@@ -4,13 +4,12 @@ import "./Search.scss";
 export default class Search extends Component<{}, {}> {
   constructor(props: any) {
     super(props);
-    // Don't call this.setState() here!
     this.state = { num_results: 0, results: [] };
-    // this.getData.bind(this);
   }
+
   onKeyUp(event: React.FormEvent<HTMLInputElement>) {
     const newValue = event.currentTarget.value;
-    this.getData(newValue);
+    // this.getData(newValue);
   }
 
   getData(newValue: string) {
@@ -27,13 +26,16 @@ export default class Search extends Component<{}, {}> {
 
   render() {
     return (
-      <div>
-        <span>Search works!</span>
-        <input
-          type="text"
-          placeholder="Describe your issue"
-          onKeyUp={this.onKeyUp.bind(this)}
-        />
+      <div className="search-container">
+        <span className="title">Find the news that matters to you!</span>
+        <div className="searchbox">
+          <span className="material-icons">search</span>
+          <input
+            type="text"
+            placeholder="Look up a topic"
+            onKeyUp={this.onKeyUp.bind(this)}
+          />
+        </div>
       </div>
     );
   }

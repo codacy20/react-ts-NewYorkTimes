@@ -1,0 +1,25 @@
+.expandables-container{
+  height: 254px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 95px;
+  .wrapper::-webkit-scrollbar {
+    display: none;
+  }    
+  .wrapper{
+    width: 558px;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    .expandable-item{
+      height: 51px;
+      border-bottom: 2px solid #DEE4F1;
+      font-size: 18px;
+      color: #202842;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+  }
+}

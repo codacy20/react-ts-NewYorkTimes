@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Result, basicRequest } from "../models/Response";
+import { Article, basicRequestArticle } from "../models/Response";
 import "./Expandable.scss";
 
-export default class Expandable extends Component<{}, basicRequest> {
+export default class Expandable extends Component<{}, basicRequestArticle> {
   constructor(props: any) {
     super(props);
     // Don't call this.setState() here!
@@ -13,15 +13,27 @@ export default class Expandable extends Component<{}, basicRequest> {
       "https://api.nytimes.com/svc/topstories/v2/world.json?api-key=vodyeykmBd5eNVqEx2GesHtIpocrXqWq"
     )
       .then((response) => response.json())
-      .then((result: basicRequest) => this.setState(result));
+      .then((result: basicRequestArticle) => this.setState(result));
+  }
+  navigate(item: Article) {
+    window.open(item.url, "_blank");
   }
 
   render() {
-    // const { results } = this.state;
-    // console.log(results);
     return (
-      <div>
-        <span>Expandable works!</span>
+      <div className="expandables-container">
+        <div className="wrapper">
+          {this.state.results.map((item: Article, index: number) => (
+            <div
+              key={index}
+              className="expandable-item"
+              onClick={() => this.navigate(item)}
+            >
+              <span>{item.title}</span>
+              <span className="material-icons">chevron_right</span>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

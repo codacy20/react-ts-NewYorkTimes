@@ -19,7 +19,9 @@ export default class Tile extends Component<{ item: EmailedArticle }, {}> {
         }}
         onClick={this.navigate.bind(this)}
       >
-        <marquee>{this.props.item.title}</marquee>
+        <div className="marquee">
+          <span className="inner">{this.props.item.title}</span>
+        </div>
       </div>
     );
   }

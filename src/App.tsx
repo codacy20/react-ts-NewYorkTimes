@@ -46,10 +46,15 @@ export default class App extends Component<{}, basicRequestEmailedArticle> {
             <Tile item={item} key={index} />
           ))}
         </div>
-        <div className="love">
+        <div
+          className="love"
+          onClick={() =>
+            window.open("https://mobile.twitter.com/RT_Amir", "_blank")
+          }
+        >
           <span>Made with</span>
           <span className="material-icons">favorite</span>
-          <span>amir</span>
+          <span>by amir</span>
         </div>
         <div className="credit">
           <span>Made using nytimes public api</span>

@@ -22,7 +22,6 @@ export default class App extends Component<{}, basicRequestEmailedArticle> {
   }
 
   checkResult(results: basicRequestEmailedArticle) {
-    console.log(results);
     results.results.forEach((item: EmailedArticle) => {
       if (item.media && item.media.length > 0) this.selectedArticles.push(item);
     });
